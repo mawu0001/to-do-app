@@ -29,19 +29,33 @@ export default function Home() {
       <main className="flex flex-col gap-9 dark:bg-white rounded-3xl p-6 my-72">
         <section className="flex flex-col gap-2">
           <h3 className="text-xl dark:text-slate-800 ">Opgaver for idag</h3>
-          <Newtasks
-            tasks={tasks}
-            isDone={isDone}
-            setIsDone={setIsDone}
-            isRemoved={isRemoved}
-            setIsRemoved={setIsRemoved}
-          />
+          {!isDone && (
+            <Newtasks
+              tasks={tasks}
+              isDone={isDone}
+              setIsDone={setIsDone}
+              isRemoved={isRemoved}
+              setIsRemoved={setIsRemoved}
+            />
+          )}
         </section>
         <Form
           handleFormSubmit={handleFormSubmit}
           handleInputChange={handleInputChange}
           task={task}
         />
+        <section>
+          <h3 className="text-xl dark:text-slate-800 ">Færdige opgaver</h3>
+          {isDone && (
+            <Newtasks
+              tasks={tasks}
+              isDone={isDone}
+              setIsDone={setIsDone}
+              isRemoved={isRemoved}
+              setIsRemoved={setIsRemoved}
+            />
+          )}
+        </section>
       </main>
     </div>
   );
